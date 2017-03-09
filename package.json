@@ -1,11 +1,11 @@
 {
   "name": "rpn-cli",
-  "description": "Command line RPN(Reverse Polish Notation) calcurator",
+  "description": "Command line RPN(Reverse Polish Notation) calculator",
   "main": "rpn.js",
   "bin": {
     "rpn": "./cli.js"
   },
-  "version": "0.0.3",
+  "version": "0.1.1",
   "dependencies": {
     "getopt": "^0.1.0",
     "mathjs": "^3.10.0"

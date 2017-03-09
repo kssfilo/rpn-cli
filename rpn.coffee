@@ -41,7 +41,7 @@ rpn=(params,debugConsole=null)->
 				v=math.eval ex
 				stack.push parseFloat v
 
-			when p in ['n','i','s','a','l']
+			when p in ['n','i','s','a','l','c','f','u']
 				if stack.length<1
 					throw "'#{p}' needs 1 values"
 
@@ -54,6 +54,9 @@ rpn=(params,debugConsole=null)->
 					when 's' then ex="sqrt(#{l})"
 					when 'a' then ex="abs(#{l})"
 					when 'l' then ex="log(#{l})"
+					when 'c' then ex="ceil(#{l})"
+					when 'f' then ex="floor(#{l})"
+					when 'u' then ex="round(#{l})"
 
 				v=math.eval ex
 				stack.push parseFloat v

@@ -65,15 +65,18 @@ switch command
 			/:divide element 2 by element 1
 			%:element 2 mod element 1
 			^:raise element 2 to the power of element 1
-			n:negatelast element
-			i:invert last element
-			s:square root function
-			a:absolute value function
-			l:natural logarithm function
-			w:swap last 2 elements
-			r:rotate all elements(1 2 3 -> 3 1 2)
+			n:Negatelast element
+			i:Invert last element
+			s:Square root function
+			a:Absolute value function
+			f:Floor last element
+			c:Ceil last element
+			u:roUnd last element
+			l:natural Logarithm function
+			w:sWap last 2 elements
+			r:Rotate all elements(1 2 3 -> 3 1 2)
 			E:base of natural logarithm
-			e:exponential function
+			e:Exponential function(5e3 -> 5000/5e-3 -> 0.005)
 
 		example:
 			#{appName} 1 2 +
@@ -82,7 +85,8 @@ switch command
 			#{appName} 1,2,1++
 			#{appName} 1 2 1 + +|#{appName} -s 3 + #pipeline:same as #{appName} 1 2 1 + + 3 +
 			#{appName} -s <<<'1 2 +' #dc style
-			#{appName} 5e3 5 #5e3=5000
+			#{appName} 5e3 5 / #same as #{appName} 5000 5 /
+			#{appName} 10 3 /u  #round:3.3333 -> 3
 		"""
 	else
 		try

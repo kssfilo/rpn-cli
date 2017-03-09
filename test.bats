@@ -56,6 +56,17 @@
 	[ "$(dist/cli.js 1e10 1e-10 x)" = "1" ]
 }
 
+@test "f" {
+	[ "$(dist/cli.js 1.5f)" = "1" ]
+}
+
+@test "c" {
+	[ "$(dist/cli.js 1.5c)" = "2" ]
+}
+
+@test "u" {
+	[ "$(dist/cli.js 1.5u)" = "2" ]
+}
 
 @test "pipe" {
 	[ "$(dist/cli.js 5 2 +|dist/cli.js -s 3 +)" = "10" ]

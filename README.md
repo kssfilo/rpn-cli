@@ -4,7 +4,6 @@ rpn-cli
 RPN(Reverse Polish Notation) calculator for command line.
 
 Similar to unix dc command but you can write formula in command line parameters not only stdin like below.
-
 ```
 >rpn 1 2 +
 #result:3
@@ -65,4 +64,5 @@ sudo npm install -g rpn-cli
 
 ## Change Log
 
-0.0.3:first release
+- 0.1.x:added ceil(c)/floor(f)/round(r)
+- 0.0.x:first release
