@@ -1,0 +1,26 @@
+{
+  "name": "rpn-cli",
+  "description": "Command line RPN(Reverse Polish Notation) calcurator",
+  "main": "rpn.js",
+  "bin": {
+    "rpn": "./cli.js"
+  },
+  "version": "0.0.3",
+  "dependencies": {
+    "getopt": "^0.1.0",
+    "mathjs": "^3.10.0"
+  },
+  "devDependencies": {
+    "coffee-jshint": "^0.2.6",
+    "coffee-script": "^1.12.4"
+  },
+  "tags": [],
+  "author": {
+    "name": "kssfilo"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/kssfilo/rpn-cli.git"
+  }
+}
