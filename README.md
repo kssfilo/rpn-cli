@@ -7,6 +7,9 @@ Similar to unix dc command but you can write formula in command line parameters 
 ```
 >rpn 1 2 +
 #result:3
+
+>echo $(rpn 1 2 +)
+#result:3
 ```
 
 dc style is also suported(-s option). You can mix stdin formula and command line.
