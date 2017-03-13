@@ -76,9 +76,9 @@ switch command
 			n:Negate last element
 			i:Invert last element
 			a:Absolute value (last element)
-			L:Log e (last element)
-			E:exponent of e (last element)
-			F:Factorial (last element,! is ok but need escape in bash)
+			l:Log e (last element)
+			L:exponent of e (last element,reverse function of Log e)
+			f:Factorial (last element,! is ok but need escape in bash)
 
 			s:Sin (last element,ragian)
 			c:Cos (last element,ragian)

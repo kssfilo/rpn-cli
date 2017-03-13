@@ -75,7 +75,7 @@ sudo npm install -g rpn-cli
 - 0.3.x:added sin(s)/cos(c)/tan(t)/asin(S)/acos(C)/atan(T)/Pi(P)/v(n-th root)/R(reverse rotate)
 - 0.3.x:s(square root) has been deprecated(use 2v)
 - 0.3.x:c(ceil) has been deprecated(use 1+_)
-- 0.2.x:added factorial(F)/drop(d)/dup(p)/log(L)/exponent(E)/-b option
+- 0.2.x:added factorial(f)/drop(d)/dup(p)/log(l)/exponent(L)/-b option
 - 0.2.x:constant E has been deprecated(use 1E)
 - 0.1.x:added ceil(c)/floor(f)/round(r)
 - 0.0.x:first release

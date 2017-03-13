@@ -59,7 +59,7 @@ rpn=(formulaOrOptions)->
 				v=math.eval ex
 				stack.push v
 
-			when p in ['n','i','a','_','=','F','!','L','E','s','S','c','C','t','T']
+			when p in ['n','i','a','_','=','f','!','l','L','s','S','c','C','t','T']
 				if stack.length<1
 					throw "'#{p}' needs 1 values"
 
@@ -70,11 +70,11 @@ rpn=(formulaOrOptions)->
 					when 'n' then ex="0-#{l}"
 					when 'i' then ex="1/#{l}"
 					when 'a' then ex="abs(#{l})"
-					when 'L' then ex="log(#{l})"
-					when 'E' then ex="exp(#{l})"
+					when 'l' then ex="log(#{l})"
+					when 'L' then ex="exp(#{l})"
 					when '_' then ex="floor(#{l})"
 					when '=' then ex="round(#{l})"
-					when 'F','!' then ex="factorial(#{l})"
+					when 'f','!' then ex="factorial(#{l})"
 					when 's' then ex="sin(#{l})"
 					when 'c' then ex="cos(#{l})"
 					when 't' then ex="tan(#{l})"
