@@ -29,7 +29,9 @@ opt.getopt (o,p)->
 parse=(formula)->
 	s=formula.join ' '
 	s=s.replace /([^-0-9.e])/g,' $1'
-	s=s.replace /([^e])-/g,'$1 -'
+	s=s.replace /([0-9.])-/g,'$1 - '
+	s=s.replace /([^e ])-/g,'$1 -'
+	s=s.replace /(-?[0-9.]+e?-?[0-9.]*)/g,' $1'
 	s=s.replace /,/g,' '
 	s.split(/ +/).filter (x)->x.length>0
 
@@ -75,8 +77,13 @@ switch command
 			l:natural Logarithm function
 			w:sWap last 2 elements
 			r:Rotate all elements(1 2 3 -> 3 1 2)
+
+		constants:
 			E:base of natural logarithm
+
+		number:
 			e:Exponential function(5e3 -> 5000/5e-3 -> 0.005)
+			-:minus(<number>- -> subtract, example:1-1 -> 1 - 1 but 1 1--1+ -> 1 1 - -1 +)
 
 		example:
 			#{appName} 1 2 +

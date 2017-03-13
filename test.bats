@@ -5,7 +5,7 @@
 }
 
 @test "-" {
-	[ "$(dist/cli.js 2 1 -)" = "1" ]
+	[ "$(dist/cli.js 40 10-10-20--20-20-)" = "0" ]
 }
 
 @test "x" {
@@ -71,7 +71,6 @@
 @test "pipe" {
 	[ "$(dist/cli.js 5 2 +|dist/cli.js -s 3 +)" = "10" ]
 }
-
 @test "parser" {
-	[ "$(dist/cli.js 1 1 -1,1,-1++++)" = "1" ]
+	[ "$(dist/cli.js 1 1 -1,1,-1++++10e-2+0.01e1-)" = "1" ]
 }
