@@ -25,7 +25,10 @@ dc style is also suported(-s option). You can mix stdin formula and command line
 #pipeline,same as echo '1 2'|rpn -s +
 ```
 
+Compare to ruby rcalc, rpn-cli is simple but is designed for easy and short to type formula. For example, "(sin(1/3) - cos(1/3))^2" is "3 inv dup sin swap cos - sqr p" in rcalc, "3ipswc-2^" in rpn-cli.
+
 All operators are single charactor and not necessary to be escaped in bash shell.
+
 Multiply can be "x" (to avoid bash * wildcard) 
 
 ```
@@ -69,6 +72,9 @@ sudo npm install -g rpn-cli
 
 ## Change Log
 
+- 0.3.x:added sin(s)/cos(c)/tan(t)/asin(S)/acos(C)/atan(T)/Pi(P)/v(n-th root)/R(reverse rotate)
+- 0.3.x:s(square root) has been deprecated(use 2v)
+- 0.3.x:c(ceil) has been deprecated(use 1+_)
 - 0.2.x:added factorial(F)/drop(d)/dup(p)/log(L)/exponent(E)/-b option
 - 0.2.x:constant E has been deprecated(use 1E)
 - 0.1.x:added ceil(c)/floor(f)/round(r)

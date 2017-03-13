@@ -5,7 +5,7 @@
 }
 
 @test "-" {
-	[ "$(dist/cli.js 40 10-10-20--20-20-)" = "0" ]
+	[ "$(./cli.coffee -2,-2-2- -2,2x-2-)" = "0" ]
 }
 
 @test "x" {
@@ -17,7 +17,7 @@
 }
 
 @test "^" {
-	[ "$(dist/cli.js 4 2 ^)" = "16" ]
+	[ "$(dist/cli.js -4 2 ^)" = "16" ]
 }
 
 @test "%" {
@@ -32,8 +32,8 @@
 	[ "$(dist/cli.js 0.5 i)" = "2" ]
 }
 
-@test "s" {
-	[ "$(dist/cli.js 4 s)" = "2" ]
+@test "v" {
+	[ "$(dist/cli.js 4 2v)" = "2" ]
 }
 
 @test "a" {
@@ -48,24 +48,25 @@
 	[ "$(dist/cli.js 2,4w/)" = "2" ]
 }
 
-@test "r" {
-	[ "$(dist/cli.js 2,1,4rx-)" = "2" ]
+@test "r/R" {
+	[ "$(dist/cli.js 2,3,5r+R/)" = "1" ]
 }
+
+@test "s/c/t/S/C/T/P" {
+	[ "$(dist/cli.js -b P8/cP8/t*P8/s/,1T2x.5C.5S++P/-)" = "0" ]
+}
+
 
 @test "e" {
 	[ "$(dist/cli.js 1e10 1e-10 x)" = "1" ]
 }
 
-@test "f" {
-	[ "$(dist/cli.js 1.5f)" = "1" ]
+@test "_" {
+	[ "$(dist/cli.js 1.5_)" = "1" ]
 }
 
-@test "c" {
-	[ "$(dist/cli.js 1.5c)" = "2" ]
-}
-
-@test "u" {
-	[ "$(dist/cli.js 1.5u)" = "2" ]
+@test "=" {
+	[ "$(dist/cli.js 1.5=)" = "2" ]
 }
 
 @test "F" {

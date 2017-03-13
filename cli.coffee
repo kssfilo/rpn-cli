@@ -32,8 +32,7 @@ opt.getopt (o,p)->
 parse=(formula)->
 	s=formula.join ' '
 	s=s.replace /([^-0-9.e])/g,' $1'
-	s=s.replace /([0-9.])-/g,'$1 - '
-	s=s.replace /([^e ])-/g,'$1 -'
+	s=s.replace /([^e, ])-/g,'$1 - '
 	s=s.replace /(-?[0-9.]+e?-?[0-9.]*)/g,' $1'
 	s=s.replace /,/g,' '
 	s.split(/ +/).filter (x)->x.length>0
@@ -69,38 +68,56 @@ switch command
 			x:multiply last two stack elements (* is ok but need escape in bash)
 			/:divide element 2 by element 1
 			%:element 2 mod element 1
+
 			^:raise element 2 to the power of element 1
+			v:n-th root (element 1 root of element 2)
+			2v:(combination) squrare root
 
 			n:Negate last element
 			i:Invert last element
-			s:Square root (last element)
 			a:Absolute value (last element)
 			L:Log e (last element)
 			E:exponent of e (last element)
 			F:Factorial (last element,! is ok but need escape in bash)
 
-			f:Floor last element
-			c:Ceil last element
-			u:roUnd last element
+			s:Sin (last element,ragian)
+			c:Cos (last element,ragian)
+			t:Tan (last element,radian)
+			S:arcSin (last element,radian)
+			C:arcCos (last element,radian)
+			T:arcTan (last element,radian)
+			P/180x:(combination) radian -> degree (last element)
+			180/Px:(combination) degree -> radian (last element)
+
+			_:floor last element
+			=:round last element
+			1+_:(combination) ceil last element
 
 			w:sWap last 2 elements
 			r:Rotate all elements(1 2 3 -> 3 1 2)
+			R:Rotate all elements(1 2 3 -> 2 3 1)
 			d:Drop last element
 			p:duP last element
 
+		constants:
+			P:Pi
+			1E:(combination) base of natural logarithm(e)
+
 		number:
 			e:Exponent (5e3 -> 5000/5e-3 -> 0.005)
-			-:minus(<number>- -> subtract, example:1-1 -> 1 - 1 but 1 1--1+ -> 1 1 - -1 +)
+			-:negative(<any operator/number>- -> subtract,for example:1-1 -> 1 - 1 but 1 -1 -> 1 -1)
 
 		example:
-			#{appName} 1 2 +
-			#{appName} 1 2+
-			#{appName} 1 2 1++
-			#{appName} 1,2,1++
+			#{appName} 1 2 +  #result:3
+			#{appName} 1 2 1++ #result:4
+			#{appName} 1,2,1++ #result:4
+			
 			#{appName} 1 2 1 + +|#{appName} -s 3 + #pipeline:same as #{appName} 1 2 1 + + 3 +
 			#{appName} -s <<<'1 2 +' #dc style
+			
 			#{appName} 5e3 5 / #same as #{appName} 5000 5 /
 			#{appName} 10 3 /u  #round:3.3333 -> 3
+
 		"""
 	else
 		try

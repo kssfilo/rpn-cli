@@ -39,7 +39,7 @@ rpn=(formulaOrOptions)->
 			when typeof p is 'number'
 				stack.push math.eval p
 
-			when p in ['+','-','x','/','%','^','*']
+			when p in ['+','-','x','/','%','^','*','v']
 				if stack.length<2
 					throw "'#{p}' needs 2 values"
 
@@ -53,12 +53,13 @@ rpn=(formulaOrOptions)->
 					when 'x','*' then ex="#{l} * #{r}"
 					when '/' then ex="#{l} / #{r}"
 					when '%' then ex="#{l} % #{r}"
-					when '^' then ex="#{l} ^ #{r}"
+					when '^' then ex="pow(#{l},#{r})"
+					when 'v' then ex="nthRoot(#{l},#{r})"
 
 				v=math.eval ex
 				stack.push v
 
-			when p in ['n','i','s','a','c','f','u','F','!','L','E']
+			when p in ['n','i','a','_','=','F','!','L','E','s','S','c','C','t','T']
 				if stack.length<1
 					throw "'#{p}' needs 1 values"
 
@@ -68,14 +69,18 @@ rpn=(formulaOrOptions)->
 				switch p
 					when 'n' then ex="0-#{l}"
 					when 'i' then ex="1/#{l}"
-					when 's' then ex="sqrt(#{l})"
 					when 'a' then ex="abs(#{l})"
 					when 'L' then ex="log(#{l})"
 					when 'E' then ex="exp(#{l})"
-					when 'c' then ex="ceil(#{l})"
-					when 'f' then ex="floor(#{l})"
-					when 'u' then ex="round(#{l})"
+					when '_' then ex="floor(#{l})"
+					when '=' then ex="round(#{l})"
 					when 'F','!' then ex="factorial(#{l})"
+					when 's' then ex="sin(#{l})"
+					when 'c' then ex="cos(#{l})"
+					when 't' then ex="tan(#{l})"
+					when 'S' then ex="asin(#{l})"
+					when 'C' then ex="acos(#{l})"
+					when 'T' then ex="atan(#{l})"
 
 				v=math.eval ex
 				stack.push v
@@ -90,19 +95,25 @@ rpn=(formulaOrOptions)->
 						stack.push r
 						stack.push l
 
-			when p in ['r','d','p']
+			when p in ['r','R','d','p']
 				if stack.length<1
 					throw "'#{p}' needs 1 values"
 				switch p
 					when 'r'
 						r=stack.pop()
 						stack.unshift r
+					when 'R'
+						r=stack.shift()
+						stack.push r
 					when 'd'
 						r=stack.pop()
 					when 'p'
 						r=stack.pop()
 						stack.unshift math.clone r
 						stack.unshift r
+
+			when p in ['P']
+				stack.push 'PI'
 
 			when p.match /^(-?[0-9.]+(e-?[0-9.]+)?)$/
 				stack.push math.eval p
