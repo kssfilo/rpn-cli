@@ -25,6 +25,7 @@ dc style is also suported(-s option). You can mix stdin formula and command line
 #pipeline,same as echo '1 2'|rpn -s +
 ```
 
+All operators are single charactor and not necessary to be escaped in bash shell.
 Multiply can be "x" (to avoid bash * wildcard) 
 
 ```
@@ -61,11 +62,14 @@ sudo npm install -g rpn-cli
 ```
 
 ## Usage
+
 ```
 @SEE_NPM_README@
 ```
 
 ## Change Log
 
+- 0.2.x:added factorial(F)/drop(d)/dup(p)/log(L)/exponent(E)/-b option
+- 0.2.x:constant E has been deprecated(use 1E)
 - 0.1.x:added ceil(c)/floor(f)/round(r)
 - 0.0.x:first release
