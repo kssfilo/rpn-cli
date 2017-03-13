@@ -116,7 +116,7 @@ switch command
 			#{appName} -s <<<'1 2 +' #dc style
 			
 			#{appName} 5e3 5 / #same as #{appName} 5000 5 /
-			#{appName} 10 3 /u  #round:3.3333 -> 3
+			#{appName} 10 3 /=  #round:3.3333 -> 3
 
 		"""
 	else
