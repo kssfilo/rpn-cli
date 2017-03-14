@@ -58,7 +58,7 @@ switch command
 
 		console.log """
 		#{appName} [-#{optSymbols}] <formula>
-		version #{pjson.version}
+		version #{version}
 		Copyright(c) 2017,kssfilo(https://kanasys.com/gtech/)
 
 		options:
