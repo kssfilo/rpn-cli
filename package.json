@@ -5,7 +5,7 @@
   "bin": {
     "rpn": "./cli.js"
   },
-  "version": "0.3.2",
+  "__VERSION__": "@VERSION@",
   "dependencies": {
     "getopt": "^0.1.0",
     "mathjs": "^3.10.0"

@@ -53,8 +53,13 @@ if formula.length is 0 and !readFromStdin
 
 switch command
 	when 'usage'
+		pjson=require './package.json'
+		version=pjson.version ? '-'
+
 		console.log """
 		#{appName} [-#{optSymbols}] <formula>
+		version #{pjson.version}
+		Copyright(c) 2017,kssfilo(https://kanasys.com/gtech/)
 
 		options:
 			-d:debug

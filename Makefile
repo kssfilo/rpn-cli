@@ -1,5 +1,9 @@
 .SUFFIXES:
 
+VERSION=0.3.3
+
+#=
+
 COMMANDS=help pack test clean
 
 #=
@@ -36,6 +40,10 @@ $(DESTDIR):
 $(DESTDIR)/README.md:README.md $(TARGETS)
 	cp README.md $@
 	vim $@ -c '/@SEE_NPM_README@/||delete||-1||read!./cli.coffee -h' -c '%s/cli\.coffee/rpn/g||x!'
+
+$(DESTDIR)/package.json:package.json|$(DESTDIR)
+	cp $< $@
+	vim $@ -c '%s/__VERSION__/version/|%s/@VERSION@/$(VERSION)/g||x!'
 
 $(DESTDIR)/%.js:%.coffee $(SDK)|$(DESTDIR)
 ifndef NC
