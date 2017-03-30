@@ -1,6 +1,6 @@
 {
   "name": "rpn-cli",
-  "description": "Command line RPN(Reverse Polish Notation) calculator",
+  "description": "Command line RPN(Reverse Polish Notation) calculator.like '>rpn 1 2 +'",
   "main": "rpn.js",
   "bin": {
     "rpn": "./cli.js"
