@@ -72,6 +72,9 @@ sudo npm install -g rpn-cli
 
 ## Change Log
 
+- 1.1.0:added statistics operator:count(N)/sum(A)/product(X)/max(M)/min(m)
+- 1.1.0:added register feature:store(y/q)/recall(Y/Q)
+- 1.1.0:added various removing operator:except last element(V)/all(D)
 - 0.3.x:added sin(s)/cos(c)/tan(t)/asin(S)/acos(C)/atan(T)/Pi(P)/v(n-th root)/R(reverse rotate)
 - 0.3.x:s(square root) has been deprecated(use 2v)
 - 0.3.x:c(ceil) has been deprecated(use 1+_)

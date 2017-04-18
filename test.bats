@@ -5,7 +5,7 @@
 }
 
 @test "-" {
-	[ "$(./cli.coffee -2,-2-2- -2,2x-2-)" = "0" ]
+	[ "$(dist/cli.js -2,-2-2- -2,2x-2-)" = "0" ]
 }
 
 @test "x" {
@@ -56,7 +56,6 @@
 	[ "$(dist/cli.js -b P8/cP8/t*P8/s/,1T2x.5C.5S++P/-)" = "0" ]
 }
 
-
 @test "e" {
 	[ "$(dist/cli.js 1e10 1e-10 x)" = "1" ]
 }
@@ -77,6 +76,18 @@
 	[ "$(dist/cli.js 1 2 3 d p + +)" = "5" ]
 }
 
+@test "N/A/Y/y/V" {
+	[ "$(dist/cli.js 1 2 3 4 NyAY/V )" = "2.5" ]
+}
+
+@test "N/X/Q/q/V" {
+	[ "$(dist/cli.js 1.1,1.1,1.1,1.1 N1qX1QvV )" = "1.1" ]
+}
+
+@test "M/m/D" {
+	[ "$(dist/cli.js 3 2 5 6 Mym1qDY1Q )" = "6 2" ]
+}
+
 @test "pipe" {
 	[ "$(dist/cli.js 5 2 +|dist/cli.js -s 3 +)" = "10" ]
 }
@@ -87,4 +98,8 @@
 
 @test "big preciiton" {
 	[ "$(dist/cli.js -b 100 l)" = "4.605170185988091368035982909368728415202202977257545952066655802" ]
+}
+
+@test "-123" {
+	[ "$(dist/cli.js -123)" = "-123" ]
 }

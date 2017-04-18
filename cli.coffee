@@ -102,7 +102,26 @@ switch command
 			r:Rotate all elements(1 2 3 -> 3 1 2)
 			R:Rotate all elements(1 2 3 -> 2 3 1)
 			d:Drop last element
+			D:Drop all elements
+			V:Drop except last elements
 			p:duP last element
+
+			y:move last element to 0th Register
+			Y:recall from 0th Register
+			q:move element 2 to <element 1>th Register
+			Q:recall from <element 1>th Register
+
+			N:couNt all elements and push to stack
+			M:find Max of all elements and push to stack
+			m:find Min of all elements and push to stack
+			A:sum of All elements and push to stack
+			X:producT of all elements and push to stack
+
+			F:apply next operator to all elements(1,2,3,F,1,+ -> 2,3,4)
+
+			NyAY/V:(combination) arithmetic mean(avarage)
+			NyXYvV:(combination) geometric mean
+			NyAY/F-F2^AY1-/2vV:(combination) standard deviation
 
 		constants:
 			P:Pi
