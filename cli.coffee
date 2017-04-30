@@ -125,7 +125,7 @@ switch command
 
 		constants:
 			P:Pi
-			1E:(combination) base of natural logarithm(e)
+			1L:(combination) base of natural logarithm(e)
 
 		number:
 			e:Exponent (5e3 -> 5000/5e-3 -> 0.005)
