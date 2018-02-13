@@ -73,7 +73,7 @@
 }
 
 @test "d/p" {
-	[ "$(dist/cli.js 1 2 3 d p + +)" = "5" ]
+	[ "$(dist/cli.js 1 2 3 d p / + )" = "2" ]
 }
 
 @test "N/A/Y/y/V" {

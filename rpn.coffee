@@ -124,8 +124,8 @@ rpn=(formulaOrOptions)->
 						r=stack.pop()
 					when 'p'
 						r=stack.pop()
-						stack.unshift math.clone r
-						stack.unshift r
+						stack.push math.clone r
+						stack.push r
 					when 'D'
 						stack=[]
 					when 'V'
