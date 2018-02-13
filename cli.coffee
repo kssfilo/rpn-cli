@@ -59,7 +59,7 @@ switch command
 		console.log """
 		#{appName} [-#{optSymbols}] <formula>
 		version #{version}
-		Copyright(c) 2017,kssfilo(https://kanasys.com/gtech/)
+		Copyright(c) 2017-2018,kssfilo(https://kanasys.com/gtech/)
 
 		options:
 			-d:debug
