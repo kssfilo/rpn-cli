@@ -115,7 +115,7 @@ switch command
 			M:find Max of all elements and push to stack
 			m:find Min of all elements and push to stack
 			A:sum of All elements and push to stack
-			X:producT of all elements and push to stack
+			X:product of all elements and push to stack
 
 			F:apply next operator to all elements(1,2,3,F,1,+ -> 2,3,4)
 
