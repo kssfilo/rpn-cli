@@ -139,10 +139,10 @@ rpn=(formulaOrOptions)->
 
 			when p in ['q','Q','y','Y']
 				nElements=
-					'Q':1
-					'q':2
-					'Y':0
-					'y':1
+					'q':1
+					'Q':2
+					'y':0
+					'Y':1
 
 				if stack.length<nElements[p]
 					throw "'#{p}' needs #{nElements[p]} values"
@@ -151,9 +151,9 @@ rpn=(formulaOrOptions)->
 				registerNumber=displayElement(stack.pop()) if p in ['q','Q']
 
 				switch
-					when p in ['q','y']
-						registers[registerNumber]=stack.pop()
 					when p in ['Q','Y']
+						registers[registerNumber]=stack.pop()
+					when p in ['q','y']
 						unless registers.hasOwnProperty registerNumber
 							throw "Register #{registerNumber} is empty"
 						stack.push math.clone registers[registerNumber]

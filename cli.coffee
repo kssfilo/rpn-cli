@@ -106,10 +106,10 @@ switch command
 			V:Drop except last elements
 			p:duP last element
 
-			y:move last element to 0th Register
-			Y:recall from 0th Register
-			q:move element 2 to <element 1>th Register
-			Q:recall from <element 1>th Register
+			Y:move last element to 0th Register
+			y:recall from 0th Register
+			Q:move element 2 to <element 1>th Register
+			q:recall from <element 1>th Register
 
 			N:couNt all elements and push to stack
 			M:find Max of all elements and push to stack

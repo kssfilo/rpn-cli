@@ -77,15 +77,15 @@
 }
 
 @test "N/A/Y/y/V" {
-	[ "$(dist/cli.js 1 2 3 4 NyAY/V )" = "2.5" ]
+	[ "$(dist/cli.js 1 2 3 4 NYAy/V )" = "2.5" ]
 }
 
 @test "N/X/Q/q/V" {
-	[ "$(dist/cli.js 1.1,1.1,1.1,1.1 N1qX1QvV )" = "1.1" ]
+	[ "$(dist/cli.js 1.1,1.1,1.1,1.1 N1QX1qvV )" = "1.1" ]
 }
 
 @test "M/m/D" {
-	[ "$(dist/cli.js 3 2 5 6 Mym1qDY1Q )" = "6 2" ]
+	[ "$(dist/cli.js 3 2 5 6 MYm1QDy1q )" = "6 2" ]
 }
 
 @test "pipe" {

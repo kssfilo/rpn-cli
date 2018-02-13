@@ -72,6 +72,7 @@ sudo npm install -g rpn-cli
 
 ## Change Log
 
+- 2.0.0:breaking change:store(y/q)/recall(Y/Q) -> store(Y/Q)/recall(y/q)
 - 1.1.0:added statistics operator:count(N)/sum(A)/product(X)/max(M)/min(m)
 - 1.1.0:added register feature:store(y/q)/recall(Y/Q)
 - 1.1.0:added various removing operator:except last element(V)/all(D)
