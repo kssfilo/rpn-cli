@@ -1,13 +1,19 @@
 ### jshint -W083 ###
 
-math=require 'mathjs'
+
+{create,all}=require 'mathjs'
+
+#math=require 'mathjs'
+#math.evaluate=math.evaluateuate
+
+math=create(all)
 
 T=console.log
 E=console.error
 
 displayElement=(x)->
 		if typeof x is 'string'
-			return math.eval(x).toString()
+			return math.evaluate(x).toString()
 		else
 			return x.toString()
 
@@ -41,10 +47,10 @@ rpn=(formulaOrOptions)->
 		p=formula.shift()
 		switch
 			when typeof p is 'number'
-				stack.push math.eval p
+				stack.push math.evaluate p
 
 			when p in ['+','-','x','/','%','^','*','v']
-				if stack.length<2
+				if stack.length < 2
 					throw "'#{p}' needs 2 values"
 
 				r=stack.pop()
@@ -60,7 +66,7 @@ rpn=(formulaOrOptions)->
 						when '^' then ex="pow(#{l},#{r})"
 						when 'v' then ex="nthRoot(#{l},#{r})"
 
-					math.eval ex
+					math.evaluate ex
 
 				if applyAll
 					stack=stack.map (l)->f2(p,l,r)
@@ -70,7 +76,7 @@ rpn=(formulaOrOptions)->
 					stack.push f2(p,l,r)
 
 			when p in ['n','i','a','_','=','f','!','l','L','s','S','c','C','t','T']
-				if stack.length<1
+				if stack.length < 1
 					throw "'#{p}' needs 1 values"
 
 				f1=(p,l)->
@@ -91,7 +97,7 @@ rpn=(formulaOrOptions)->
 						when 'C' then ex="acos(#{l})"
 						when 'T' then ex="atan(#{l})"
 
-					math.eval ex
+					math.evaluate ex
 
 				if applyAll
 					stack=stack.map (l)->f1(p,l)
@@ -101,7 +107,7 @@ rpn=(formulaOrOptions)->
 					stack.push f1(p,l)
 
 			when p in ['w']
-				if stack.length<2
+				if stack.length < 2
 					throw "'#{p}' needs 2 values"
 				switch p
 					when 'w'
@@ -111,7 +117,7 @@ rpn=(formulaOrOptions)->
 						stack.push l
 
 			when p in ['r','R','d','p','D','V']
-				if stack.length<1
+				if stack.length < 1
 					throw "'#{p}' needs 1 values"
 				switch p
 					when 'r'
@@ -144,7 +150,7 @@ rpn=(formulaOrOptions)->
 					'y':0
 					'Y':1
 
-				if stack.length<nElements[p]
+				if stack.length < nElements[p]
 					throw "'#{p}' needs #{nElements[p]} values"
 
 				registerNumber='0'
@@ -159,30 +165,30 @@ rpn=(formulaOrOptions)->
 						stack.push math.clone registers[registerNumber]
 
 			when p in ['N','M','m','A','X']
-				if stack.length<1
+				if stack.length < 1
 					throw "'#{p}' needs 1 values"
 
 				switch p
 					when 'N'
 						f=(i,x)->i.add 1
-						i=math.eval 0
+						i=math.evaluate 0
 					when 'M'
 						f=(i,x)->math.max i,x
-						i=math.eval '-Infinity'
+						i=math.evaluate '-Infinity'
 					when 'm'
 						f=(i,x)->math.min i,x
-						i=math.eval 'Infinity'
+						i=math.evaluate 'Infinity'
 					when 'A'
 						f=(i,x)->math.add i,x
-						i=math.eval 0
+						i=math.evaluate 0
 					when 'X'
 						f=(i,x)->math.multiply i,x
-						i=math.eval 1
+						i=math.evaluate 1
 
 				stack.push stack.reduce(f,i)
 
 			when p.match /^(-?[0-9.]+(e-?[0-9.]+)?)$/
-				stack.push math.eval p
+				stack.push math.evaluate p
 
 			else
 				throw "'#{p}' unknown op"
@@ -190,7 +196,7 @@ rpn=(formulaOrOptions)->
 		step++
 		if debugConsole?
 			debugText="step #{step}:[#{p}] #{display(stack).join ' '}#{if applyAll then '(F)' else ''}"
-			if Object.keys(registers).length>0
+			if Object.keys(registers).length > 0
 				debugText+="\t:reg{#{("#{i}:#{displayElement v}" for i,v of registers).join ' '}}"
 			debugConsole debugText
 

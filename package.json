@@ -1,26 +1,34 @@
 {
-  "name": "rpn-cli",
-  "description": "Command line RPN(Reverse Polish Notation) calculator.like '>rpn 1 2 +'",
-  "main": "rpn.js",
+  "@PARTPIPE@_@PARTPIPE@name": "@PARTPIPE@NAME@PARTPIPE@",
+  "description": "@PARTPIPE@DESCRIPTION@PARTPIPE@",
+  "main": "@PARTPIPE@NAME@PARTPIPE@.js",
+  "license": "MIT",
   "bin": {
-    "rpn": "./cli.js"
+    "@PARTPIPE@BINNAME@PARTPIPE@": "./cli.js"
   },
-  "__VERSION__": "@VERSION@",
+  "@PARTPIPE@_@PARTPIPE@version": "@PARTPIPE@VERSION@PARTPIPE@",
   "dependencies": {
-    "getopt": "^0.1.0",
-    "mathjs": "^3.10.0"
+    "getopt": "0.1.0",
+    "mathjs": "6.0.3"
   },
   "devDependencies": {
-    "coffee-jshint": "^0.2.6",
-    "coffee-script": "^1.12.4"
+    "coffee-jshint": "1.1.1",
+    "coffeescript": "2.4.1",
+    "partpipe": "^0.4.0"
   },
   "tags": [],
+  "keywords": [
+    "@PARTPIPE@KEYWORDS@PARTPIPE@"
+  ],
   "author": {
-    "name": "kssfilo"
+    "name": "@kssfilo",
+    "url": "https://kanasys.com/gtech/"
   },
-  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "http://github.com/kssfilo/rpn-cli.git"
+    "url": "https://github.com/kssfilo/@PARTPIPE@NAME@PARTPIPE@.git"
+  },
+  "engines": {
+    "node": ">=@PARTPIPE@NODEVER@PARTPIPE@"
   }
 }
