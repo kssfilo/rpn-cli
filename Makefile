@@ -1,60 +1,78 @@
 .SUFFIXES:
 
-VERSION=2.0.1
+NAME=rpn-cli
+BINNAME=recipe
+VERSION=1.1.0
+DESCRIPTION=Command line RPN calculator using math.js engine. example: '$$ rpn 1 2 +'
+KEYWORDS=math mathjs postfix calculator calculate formula rpn reverse poplish notation HP science stdin infix 64bit bigint
+NODEVER=8
+LICENSE=MIT
 
-#=
+PKGKEYWORDS=$(shell echo $$(echo $(KEYWORDS)|perl -ape '$$_=join("\",\"",@F)'))
+PARTPIPETAGS="_@" "VERSION@$(VERSION)" "NAME@$(NAME)" "BINNAME@$(BINNAME)" "DESCRIPTION@$(DESCRIPTION)" 'KEYWORDS@$(PKGKEYWORDS)' "NODEVER@$(NODEVER)" "LICENSE@$(LICENSE)" 
 
-COMMANDS=help pack test clean
+ifdef CN
+PARTPIPETAGS+= "CHECKUPDATENOTIFY"
+NC=1
+endif
 
 #=
 
 DESTDIR=dist
 COFFEES=$(wildcard *.coffee)
-TARGETNAMES=package.json LICENSE $(patsubst %.coffee,%.js,$(COFFEES)) 
+TARGETNAMES=$(patsubst %.coffee,%.js,$(COFFEES)) 
 TARGETS=$(patsubst %,$(DESTDIR)/%,$(TARGETNAMES))
-ALL=$(TARGETS) $(DESTDIR)/README.md
+DOCNAMES=LICENSE README.md package.json
+DOCS=$(patsubst %,$(DESTDIR)/%,$(DOCNAMES))
+ALL=$(TARGETS) $(DOCS)
 SDK=node_modules/.gitignore
 TOOLS=node_modules/.bin
 
 #=
 
+COMMANDS=build help pack test clean test-main
+
 .PHONY:$(COMMANDS)
 
-pack:$(ALL)|$(DESTDIR)
+default:build
 
-test:$(TARGETS) test.bats
-	chmod +x dist/cli.js
+build:$(TARGETS)
+
+docs:$(DOCS)
+
+test:test.passed
+
+test-main:$(TARGETS) test.bats
 	./test.bats
 
+pack:$(ALL) test.passed |$(DESTDIR)
+
 clean:
-	-rm -r $(DESTDIR) node_modules
+	rm -r $(DESTDIR) test.passed node_modules 2>&1 ;true
 
 help:
 	@echo "Targets:$(COMMANDS)"
 
 #=
 
+test.passed:test-main
+	touch $@
+
 $(DESTDIR):
 	mkdir -p $@
 
-$(DESTDIR)/README.md:README.md $(TARGETS)
-	cp README.md $@
-	vim $@ -c '/@SEE_NPM_README@/||delete||-1||read!./cli.coffee -h' -c '%s/cli\.coffee/rpn/g||x!'
+$(DESTDIR)/%:% $(TARGETS) Makefile|$(SDK) $(DESTDIR)
+	cat $<|$(TOOLS)/partpipe -c $(PARTPIPETAGS)  >$@
 
-$(DESTDIR)/package.json:package.json|$(DESTDIR)
-	cp $< $@
-	vim $@ -c '%s/__VERSION__/version/|%s/@VERSION@/$(VERSION)/g||x!'
-
-$(DESTDIR)/%.js:%.coffee $(SDK)|$(DESTDIR)
+$(DESTDIR)/%.js:%.coffee $(SDK) |$(DESTDIR)
 ifndef NC
 	$(TOOLS)/coffee-jshint -o node $< 
 endif
 	head -n1 $<|grep '^#!'|sed 's/coffee/node/'  >$@ 
-	cat $<|$(TOOLS)/coffee -bcs >> $@
-
-$(DESTDIR)/%:%|$(DESTDIR)
-	cp $< $@
+	cat $<|$(TOOLS)/partpipe $(PARTPIPETAGS) |$(TOOLS)/coffee -bcs >> $@
+	chmod +x $@
 
 $(SDK):package.json
 	npm install
 	@touch $@
+

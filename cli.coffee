@@ -35,7 +35,7 @@ parse=(formula)->
 	s=s.replace /([^e, ])-/g,'$1 - '
 	s=s.replace /(-?[0-9.]+e?-?[0-9.]*)/g,' $1'
 	s=s.replace /,/g,' '
-	s.split(/ +/).filter (x)->x.length>0
+	s.split(/ +/).filter (x)->x.length > 0
 formula=parse formula
 debugConsole? "params:#{formula.join ' '}"
 
@@ -53,13 +53,10 @@ if formula.length is 0 and !readFromStdin
 
 switch command
 	when 'usage'
-		pjson=require './package.json'
-		version=pjson.version ? '-'
-
 		console.log """
 		#{appName} [-#{optSymbols}] <formula>
-		version #{version}
-		Copyright(c) 2017-2018,kssfilo(https://kanasys.com/gtech/)
+		version @PARTPIPE@VERSION@PARTPIPE@
+		Copyright(c) 2017-@PARTPIPE@|date +%Y;@PARTPIPE@ @kssfilo(https://kanasys.com/gtech/)
 
 		options:
 			-d:debug
